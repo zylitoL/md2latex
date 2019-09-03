@@ -9,7 +9,7 @@ def emph_latex(target: str, md: str, latex_head: str, latex_tail: str) -> str:
     :return: The LaTeX equivalent of the markdown string
     """
     # Check if the markdown is a horizontal rule
-    if target == "***" or "---" or "___":
+    if target == "***" or target == "---" or target == "___":
         return "\\noindent\\rule{\\textwidth}{0.4pt}"
 
     # Repeatedly replace pairs of markdown emphasis strings with LaTeX commands and its ends
