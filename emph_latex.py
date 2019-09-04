@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+
+"""emph_latex.py: Converts Markdown with specified tokens to specified LaTeX commands"""
+
+__authors__ = "DeVon Young Herr, Jacob Scott Moore"
+
+
 def emph_latex(target: str, md: str, latex_head: str, latex_tail: str) -> str:
     """
     this function takes a given markdown string, an emphasis string (such as ***), a LaTeX command (such as \textbf{)
