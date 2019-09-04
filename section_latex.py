@@ -23,3 +23,4 @@ def section_latex(line: str) -> str:
     if "#" in line:
         return "\\title{" + line[2:] + "}"
         
+    return line
