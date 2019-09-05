@@ -30,9 +30,10 @@ def line_latex(line: str) -> str:
         "**": ["\\textbf{", "}"],
         "__": ["\\textbf{", "}"],
         "*": ["\\textit{", "}"],
-        "_": ["\\textit{", "}"]
+        "_": ["\\textit{", "}"],
+        "`": ["\\verb|", "|"]
     }
-    
+
     # loop through all key-value pairs
     for md, latex in md_latex_commands.items():
         line = emph_latex(line, md, latex[0], latex[1])
