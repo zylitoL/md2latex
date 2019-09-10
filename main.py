@@ -24,13 +24,11 @@ def main():
 
     regex_number = re.compile(r"(^\d+)\.(.*)")
     regex_bullet = re.compile(r"^- (.*)")
-    regex_highlight = re.compile(r"^```(\w+)")
 
     # parameters to track delimited environments
 
     itemize = False
     code = False
-    highlight = False
 
     for line in md:
 
