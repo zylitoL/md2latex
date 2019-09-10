@@ -31,63 +31,10 @@ def main():
     itemize = False
     code = False
     highlight = False
-    toc = False
 
     for line in md:
 
         line = line.rstrip()  # strip trailing newlines
-
-        # check if the line signifies table of contents
-
-        if line == "<!-- toc -->":
-            latex.append("\\tableofcontents")
-            toc = True
-            continue
-        # if table of contents ends, do so
-        if line == "<!-- tocstop -->":
-            toc = False
-            continue
-        # dont process the line if its a table of contents reference
-        elif toc:
-            continue
-
-        # check if the line is display math
-
-        if "$$" in line:
-            latex.append(line)
-            continue
-
-        # check if lines starts or ends code block environments
-
-        if line == r"```":
-            # if we are currently in a code environment, end it
-            if code:
-                latex.append("\\end{verbatim}")
-                code = False
-                continue
-            # if we are currently in a syntax highlight environment, end it
-            if highlight:
-                latex.append("\\end{minted}")
-                highlight = False
-                continue
-            # if we are not currently in a code environment, start it
-            if not code:
-                latex.append("\\begin{verbatim}")
-                code = True
-                continue
-
-        # check if line starts a syntax highlight environment
-
-        l = regex_highlight.match(line)
-        if l:
-            # if the previous line is not in a syntax highlighted environment, the current line starts a new one
-            latex.append("\\begin{minted}{" + l.group(1) + "}")
-            highlight = True
-            continue
-        # if we are currently in a code environment, dont modify the line
-        if code or highlight:
-            latex.append(line)
-            continue
 
         line = line_latex(line)  # convert in-line markdown formatting to LaTeX formatting
 
