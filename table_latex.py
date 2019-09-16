@@ -43,7 +43,7 @@ class Table:
 
     def __str__(self):
         res = "\\begin{center}\n" + \
-              "\\begin{tabular}{" + self.latex_alignment() + "}\n" +\
+              "\\begin{tabular}{|" + self.latex_alignment() + "|}\n" +\
               "    \\hline\n" + \
               "    " + self.latex_header() + "\n" + \
               "    \\hline\n" + \
