@@ -1,13 +1,11 @@
 # md2latex -- Boostnote
 
----
-
 A program to convert Markdown files to LaTeX files. This supports additional Markdown implementations, namely that of [Boostnote](https://github.com/BoostIO/Boostnote). 
 
 
 ## Getting started
 
-These instructions will install `md2latex1` on your local machine and convert your first Markdown document to LaTeX.
+These instructions will install `md2latex` on your local machine and convert your first Markdown document to LaTeX.
 
 ### Prerequisites
 
