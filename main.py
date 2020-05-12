@@ -28,7 +28,8 @@ def main():
     regex_bullet = re.compile(r"^- (.*)")
     regex_highlight = re.compile(r"^```(\w+)")
     regex_table = re.compile(r"\|([\s\S]*\|)+")
-    regex_admonition = re.compile(r"!!! \S+ (\S+)")
+    regex_admonition = re.compile(r"!!! note ([\s\S]*)")
+    regex_display = re.compile(r"\$\$([\s\S]*)\$\$")
 
     # parameters to track delimited environments
 
@@ -39,6 +40,7 @@ def main():
     table = False
     admonition = False
     definition = False
+    display = False
 
     subset = []  # for table lines
 
@@ -101,7 +103,18 @@ def main():
         # check if the line is display math
 
         if "$$" in line:
-            latex.append(line)
+            l = regex_display.match(line)
+            if l:
+                latex.append("\\begin{equation*}")
+                latex.append(l.group(1).strip())
+                latex.append("\\end{equation*}")
+
+            elif display:
+                latex.append("\\end{equation*}")
+
+            else:
+                latex.append("\\begin{equation*}")
+
             continue
 
         # check if lines starts or ends code block environments
